@@ -1,5 +1,19 @@
+import Header from "./components/Header/Header";
+import History from "./components/History/History";
+import Dashboard from "./components/Dashboard/Dashboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
-  return <div className="h-screen w-screen">hi</div>;
+  return (
+    <BrowserRouter>
+      <div className="h-screen w-screen">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/history" element={<History />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
 
 export default App;
