@@ -1,6 +1,5 @@
-
 function App() {
-  return <div className="text-center">hi</div>;
+  return <div className="h-screen w-screen">hi</div>;
 }
 
 export default App;
