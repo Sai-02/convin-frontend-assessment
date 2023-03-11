@@ -31,7 +31,7 @@ const Card = ({ val }) => {
     });
   };
   const showIframe = () => {
-    dispatch(cardActions.addToHistory(val));
+    dispatch(cardActions.addToHistory({ ...val, time: Date.now() }));
     confirm({
       title: "IFrame",
       content: <iframe src={val.url} />,
