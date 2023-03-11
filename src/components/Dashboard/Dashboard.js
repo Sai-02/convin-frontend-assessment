@@ -10,10 +10,10 @@ const Dashboard = () => {
   const openAddCardPage = () => {
     navigate("/add");
   };
-  const [cards, setCards] = useState(cardObj[activeCategory]);
+  const [cards, setCards] = useState([]);
   useEffect(() => {
-    setCards(cardObj[activeCategory]);
-  }, [activeCategory]);
+    if (activeCategory !== "") setCards(cardObj[activeCategory]);
+  }, [activeCategory, cardObj]);
   return (
     <div className="grid grid-cols-10 ">
       <div

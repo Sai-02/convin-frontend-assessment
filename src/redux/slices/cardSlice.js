@@ -18,6 +18,14 @@ export const cardSlice = createSlice({
       newObj[newCard.category].push(newCard);
       state.cardObj = { ...newObj };
     },
+    deleteCard: (state, action) => {
+      const card = action.payload;
+      const newObj = { ...state.cardObj };
+      const arr = newObj[card.category];
+      const newArr = arr.filter((val) => val.id !== card.id);
+      newObj[card.category] = newArr;
+      state.cardObj = newObj;
+    },
     updateActiveCategory: (state, action) => {
       state.activeCategory = action.payload;
     },
