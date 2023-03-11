@@ -1,26 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  value: 0,
+  cardObj: {},
+  activeCategory: "",
 };
 
 export const cardSlice = createSlice({
-  name: "counter",
+  name: "card",
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    addCard: (state, action) => {
+      const newCard = { ...action.payload, id: Math.random() * 100000 };
+      const newObj = { ...state.cardObj };
+      if (!Object.keys(state.cardObj).includes(newCard.category)) {
+        newObj[newCard.category] = [];
+      }
+      newObj[newCard.category].push(newCard);
+      state.cardObj = { ...newObj };
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = cardSlice.actions;
+export const cardActions = { ...cardSlice.actions };
 
 export default cardSlice.reducer;

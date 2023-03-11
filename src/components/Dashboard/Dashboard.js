@@ -1,8 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 import Sidebar from "./Sidebar";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const openAddCardPage = () => {
+    navigate("/add");
+  };
   return (
     <div className="grid grid-cols-10 ">
       <div
@@ -20,7 +25,10 @@ const Dashboard = () => {
         }}
       >
         <div className="flex justify-end">
-          <button className="px-2 py-1 border-2 border-red-500 rounded-lg text-red-500">
+          <button
+            className="px-2 py-1 border-2 border-red-500 rounded-lg text-red-500"
+            onClick={openAddCardPage}
+          >
             + Add Card
           </button>
         </div>
