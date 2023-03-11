@@ -26,6 +26,37 @@ export const cardSlice = createSlice({
       newObj[card.category] = newArr;
       state.cardObj = newObj;
     },
+    editCard: (state, action) => {
+      const { oldCard, newCard } = action.payload;
+      if (oldCard.category === newCard.category) {
+        const newObj = { ...state.cardObj };
+        const arr = newObj[oldCard.category];
+        let index = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].id === oldCard.id) index = i;
+        }
+        arr[index] = {
+          ...newCard,
+          id: arr[index].id,
+        };
+        newObj[oldCard.category] = arr;
+        state.cardObj = newObj;
+      } else {
+        let newObj = { ...state.cardObj };
+        const arr = newObj[oldCard.category];
+        const newArr = arr.filter((val) => val.id !== oldCard.id);
+        newObj[oldCard.category] = newArr;
+        state.cardObj = newObj;
+        newCard["id"] = oldCard.id;
+        newObj = { ...state.cardObj };
+        if (!Object.keys(state.cardObj).includes(newCard.category)) {
+          newObj[newCard.category] = [];
+        }
+        newObj[newCard.category].push(newCard);
+        state.cardObj = { ...newObj };
+      }
+    },
+
     updateActiveCategory: (state, action) => {
       state.activeCategory = action.payload;
     },

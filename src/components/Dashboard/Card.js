@@ -3,7 +3,16 @@ import { Modal } from "antd";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { cardActions } from "../../redux/slices/cardSlice";
+import { useNavigate } from "react-router-dom";
 const Card = ({ val }) => {
+  const navigate = useNavigate();
+  const showEditPage = () => {
+    navigate("/edit", {
+      state: {
+        ...val,
+      },
+    });
+  };
   const { confirm } = Modal;
   const dispatch = useDispatch();
   const showDeleteModal = () => {
@@ -19,13 +28,17 @@ const Card = ({ val }) => {
       onCancel() {},
     });
   };
+
   return (
     <div className="justify-self-center shadow rounded-lg p-4  cursor-pointer flex flex-col gap-4 w-[300px]">
       <p className="">{val.name}</p>
       <p className="">{val.url}</p>
       <p className="italic">{val.category}</p>
       <div className="flex justify-between items-center">
-        <button className="rounded py-1 px-2 text-white bg-gray-500">
+        <button
+          className="rounded py-1 px-2 text-white bg-gray-500"
+          onClick={showEditPage}
+        >
           Edit
         </button>
         <button
