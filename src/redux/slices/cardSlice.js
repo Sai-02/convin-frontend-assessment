@@ -18,6 +18,9 @@ export const cardSlice = createSlice({
       newObj[newCard.category].push(newCard);
       state.cardObj = { ...newObj };
     },
+    updateActiveCategory: (state, action) => {
+      state.activeCategory = action.payload;
+    },
   },
 });
 

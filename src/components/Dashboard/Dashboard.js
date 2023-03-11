@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 import Sidebar from "./Sidebar";
 
 const Dashboard = () => {
+  const { cardObj, activeCategory } = useSelector((state) => state.card);
   const navigate = useNavigate();
   const openAddCardPage = () => {
     navigate("/add");
   };
+  const [cards, setCards] = useState(cardObj[activeCategory]);
+  useEffect(() => {
+    setCards(cardObj[activeCategory]);
+  }, [activeCategory]);
   return (
     <div className="grid grid-cols-10 ">
       <div
@@ -33,8 +39,8 @@ const Dashboard = () => {
           </button>
         </div>
         <div className="grid grid-cols-3 gap-6">
-          {[...Array(5)].map((val, index) => {
-            return <Card />;
+          {cards.map((val) => {
+            return <Card key={val.id} val={val} />;
           })}
         </div>
       </div>
