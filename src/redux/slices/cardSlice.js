@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   cardObj: {},
   activeCategory: "",
+  history: [],
 };
 
 export const cardSlice = createSlice({
@@ -59,6 +60,9 @@ export const cardSlice = createSlice({
 
     updateActiveCategory: (state, action) => {
       state.activeCategory = action.payload;
+    },
+    addToHistory(state, action) {
+      state.history = [action.payload, ...state.history];
     },
   },
 });

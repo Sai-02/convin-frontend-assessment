@@ -30,7 +30,8 @@ const Card = ({ val }) => {
       onCancel() {},
     });
   };
-  const showIframe = (e) => {
+  const showIframe = () => {
+    dispatch(cardActions.addToHistory(val));
     confirm({
       title: "IFrame",
       content: <iframe src={val.url} />,
