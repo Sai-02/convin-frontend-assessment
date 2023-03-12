@@ -49,11 +49,11 @@ const Card = ({ val }) => {
   return (
     <>
       <div
-        className="justify-self-center shadow rounded-lg p-4  cursor-pointer flex flex-col gap-4 w-[300px]"
+        className="justify-self-center shadow rounded-lg p-4  cursor-pointer flex flex-col gap-4 w-[300px] overflow-hidden"
         onClick={showIframe}
       >
         <p className="">{val.name}</p>
-        <p className="">{val.url}</p>
+        <p className="overflow-hidden">{val.url}</p>
         <p className="italic">{val.category}</p>
         <div className="flex justify-between items-center">
           <button
