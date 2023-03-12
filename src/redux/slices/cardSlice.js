@@ -1,7 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cardObj: {},
+  cardObj: {
+    "Educational Videos": [
+      {
+        id: "1111111111111111111111",
+        name: "React js",
+        category: "Educational Videos",
+        url: "https://www.youtube.com/embed/iZhV0bILFb0",
+      },
+      {
+        id: "222222222222222222222222222",
+        name: "CSS",
+        category: "Educational Videos",
+        url: "https://www.youtube.com/embed/OXGznpKZ_sA",
+      },
+      {
+        id: "33333333333333333333333333333333",
+        name: "Namaste Javascript",
+        category: "Educational Videos",
+        url: "https://www.youtube.com/embed/pN6jk0uUrD8",
+      },
+    ],
+    "Historical Videos": [
+      {
+        id: "444444444444444",
+        name: "Alexander the Great",
+        category: "Historical Videos",
+        url: "https://www.youtube.com/embed/K7lb6KWBanI",
+      },
+    ],
+  },
   activeCategory: "",
   history: [],
 };
